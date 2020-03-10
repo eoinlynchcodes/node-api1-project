@@ -25,6 +25,18 @@ app.get('/hello', (
  .json({ message: 'hello'})
 })
 
+app.post('/api/users', (
+    req,
+    res,
+) => {
+    if(req.body.name === null || req.body.bio === null){
+        res.status(400)
+        .json( {errorMessage: "Please provide name and bio for the user."})
+    } else {
+        user.insert()
+    }
+})
+
 // Step 7 - Make the express listen on PORT 
 app.listen(PORT, () => {
     console.log('Great! listening on')
